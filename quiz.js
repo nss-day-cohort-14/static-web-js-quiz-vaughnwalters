@@ -5,33 +5,29 @@ var enter = document.getElementById("button");
 var space = " ";
 var treeBuilder = "";
 var charWidth = 1;
+var treeObj = {};
 
-
-function growTree() {
-  enteredHeightValue=enteredHeight.value;
-  enteredCharacterValue=enteredCharacter.value;
+function growTree(treeObj) {
+  treeObj.char = enteredCharacter.value;
+  treeObj.height = enteredHeight.value;
   var spaces = 1;
-
-  treeBuilder = space.repeat(enteredHeightValue) + enteredCharacterValue;
-    console.log("treeBuilder", treeBuilder);
-
-  for (var i=0; i<enteredHeightValue; i++) {
-    charWidth += 2;
-    treeBuilder = space.repeat(enteredHeightValue - parseInt(spaces)) + enteredCharacterValue.repeat(parseInt(charWidth));
-    console.log("treeBuilder", treeBuilder);
-    spaces+=1;
-  }
-  if (enteredHeightValue.length === 0) {
+  if (treeObj.height.length === 0 || treeObj.char.length === 0) {
     alert ("Both fields must have values entered");
+  } else {
+    treeBuilder = space.repeat(treeObj.height) + treeObj.char;
+    console.log("treeBuilder", treeBuilder);
+    for (var i=0; i<treeObj.height; i++) {
+      charWidth += 2;
+      treeBuilder = space.repeat(treeObj.height - parseInt(spaces)) + treeObj.char.repeat(parseInt(charWidth));
+      console.log("treeBuilder", treeBuilder);
+      spaces+=1;
+    }
+    charWidth=1; 
   }
-  else if (enteredCharacterValue.length === 0) {
-    alert ("Both fields must have values entered");
-  } 
 };
-
+  
 function enterEvent() {
   if (event.keyCode===13) { 
-    console.log("you pressed enter");
     growTree();
   }
 };
