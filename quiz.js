@@ -31,7 +31,7 @@ function enterEvent() {
     var treeObj = {
     char: enteredCharacter.value,
     height: enteredHeight.value
-    };
+    }; 
   if (event.keyCode===13) {
     growTree(treeObj);
   }
