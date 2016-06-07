@@ -5,12 +5,11 @@ var enter = document.getElementById("button");
 var space = " ";
 var treeBuilder = "";
 var charWidth = 1;
+var treeObj = {};
 
 function growTree(treeObj) {
-  var treeObj = {
-    char: enteredCharacter.value,
-    height: enteredHeight.value
-    };
+  treeObj.char = enteredCharacter.value;
+  treeObj.height = enteredHeight.value;
   var spaces = 1;
   if (treeObj.height.length === 0 || treeObj.char.length === 0) {
     alert ("Both fields must have values entered");
@@ -28,12 +27,8 @@ function growTree(treeObj) {
 };
   
 function enterEvent() {
-    var treeObj = {
-    char: enteredCharacter.value,
-    height: enteredHeight.value
-    };
-  if (event.keyCode===13) {
-    growTree(treeObj);
+  if (event.keyCode===13) { 
+    growTree();
   }
 };
 
